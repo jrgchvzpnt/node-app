@@ -11,20 +11,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '14'
-
-    
-        
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        env: 
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
+      
       - name: Install dependencies
         run: npm install
-
       - name: Run tests
         run: npm test
-
       - name: Build Docker image
         run: docker build -t jrgerne/node-app:latest .
 
