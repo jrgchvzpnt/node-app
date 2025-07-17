@@ -7,5 +7,15 @@
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Ejecutando pruebas\" && exit 0"
+  },
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "jest": {
+    "coverageReporters": ["lcov", "text"]
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
   }
 }
